@@ -13,25 +13,17 @@ class CustomList<T extends Number> {
 
     public void add(T value) throws NonPositiveNumberException {
         if (value.doubleValue() <= 0) {
-            throw new NonPositiveNumberException("Angka tidak boleh nol atau negatif: " + value);
+            throw new NonPositiveNumberException("tidak bisa negatif" + value);
         }
         data.add(value);
     }
-
-    // Mengambil nilai pada posisi 10% rendah
     public T getTenPercentLow() {
         if (data.isEmpty()) {
-            return null; // gaya mahasiswa: return null daripada lempar exception lain
+            return null; 
         }
-
-        // copy supaya tidak mengganggu data asli
         ArrayList<T> sorted = new ArrayList<>(data);
         Collections.sort(sorted, (a, b) -> Double.compare(a.doubleValue(), b.doubleValue()));
-
-        // index 10% (pakai floor)
-        int idx = (int) Math.floor(sorted.size() * 0.1);
-
-        // Antisipasi jika hasil 0.1 * size = 0
+        int idx = (int)(sorted.size() * 0.1);
         if (idx < 0) idx = 0;
         if (idx >= sorted.size()) idx = sorted.size() - 1;
 
@@ -43,7 +35,7 @@ class CustomList<T extends Number> {
     }
 }
 
- class Main {
+ public class latihangenericsdanexception {
     public static void main(String[] args) {
         CustomList<Integer> list = new CustomList<>();
 
